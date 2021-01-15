@@ -1,0 +1,24 @@
+<html>
+  <head>
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  </head>
+  <body>
+      <table id="mytable">
+        <tr>
+            <th>Name</th>
+            <th>Affiliation</th>
+            <th>Allegiance</th>
+        </tr>
+      </table>
+      <script>
+          $(document).ready(function (){
+              $.getJSON('/allegiances', function(data){
+                  console.log(data)
+                  data.forEach(function(element) {
+                      $('#mytable tr:last').after(`<tr><td>${element['Name']}</td><td>${element['Affiliation']}</td><td>${element['Allegiance']}</td></tr>`);
+                  });
+              });
+          });
+      </script>
+  </body>
+</html>
